@@ -4,7 +4,7 @@ const usuariosRoutes = Router();
 
 let usuarios = [];
 
-usuariosRoutes.get("/", (res,res) => {
+usuariosRoutes.get("/", (req, res) => {
     return res.statusCode(200).json({
         mensage:
         usuarios.lenght == 0

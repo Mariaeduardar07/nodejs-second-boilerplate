@@ -1,16 +1,15 @@
-import { Router } from "express";
+import express from "express";
+import { config } from "dotenv";
 
-// Lista de importação das rotas do projeto
-import usuariosRoutes from "./routes/usuarios.routes.js";
+import routes from "./routes/index.routes.js";
 
-const routes = Router();
+config();
 
-// Rota raiz para teste
-routes.get("/", (req, res) => {
-  return res.status(200).json({ message: "Vai Corinthians!" });
-})
+const serverPort = process.env.PORT || 4000;
 
-// Lista de uso das rotas do projeto
-routes.use("/usuarios", usuariosRoutes);
+const app = express();
+app.use(express.json());
 
-export default routes;
+app.listen(serverPort, () => {
+  console.log(`⚡ Server started on http://localhost:${serverPort}`);
+});
