@@ -14,7 +14,17 @@ usuariosRoutes.get("/", (req, res) => {
         ?"não há usuários cadastrado"
         :`Total de usuários: ${usuarios.length}`,
     usuarios, 
-    })
-})
+    });
+});
 
+usuariosRoutes.post("/", (req, res) => {
+    const {name, email, password} = req.body;
+
+   const usuario = usersRepository.addUser(name,email, password)
+
+    return res.status(201).json({
+        message:"Usuários cadastado com sucesso!",
+        usuario,
+    });
+});
 export default usuariosRoutes;
