@@ -3,6 +3,7 @@ import UsersRepository from "../models/users/UsersRepository.js";
 
 const usuariosRoutes = Router();
 
+// Criação da instância do repositório
 const usersRepository = new UsersRepository();
 
 usuariosRoutes.get("/", (req, res) => {
