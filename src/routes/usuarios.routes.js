@@ -24,8 +24,35 @@ usuariosRoutes.post("/", (req, res) => {
    const usuario = usersRepository.addUser(name,email, password)
 
     return res.status(201).json({
-        message:"Usuários cadastado com sucesso!",
+        message:"Usuários cadastrado com sucesso!",
         usuario,
     });
 });
+
+usuariosRoutes.get("/:id", (req, res) => {
+    const { id } = req.params;
+    const user = usersRepository.getUserById(id);
+
+    if(!user) {
+        return res.status(404).json({
+        message:`Usuário com id ${id} não encontrado`,
+        });
+    }
+
+    return res.status(200).json ({
+        message:`Usuário com id ${id} encontrado`,
+        user,
+    });
+});
+
+usuariosRoutes.put("/:id", (req, res) => {
+
+})
+
+usuariosRoutes.delete("/:id", (req, res) => {
+
+})
+
+
+
 export default usuariosRoutes;
